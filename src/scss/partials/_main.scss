@@ -1,0 +1,32 @@
+body {
+  // font-family: 'Open Sans', sans-serif;
+  @include fontRoboto;
+  font-size: $fontSize;
+  color: $colorBlue;
+  // background-color: $colorBlue;
+}
+
+
+.c {
+  &-wrap {
+    max-width: $maxWidth;
+    margin: 0 auto;
+    padding: 0 30px;
+  }
+
+  &-flex {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    &--center {
+      justify-content: center;
+    }
+
+    &--spaceBetween {
+      justify-content: space-between;
+    }
+  }
+}
+
+

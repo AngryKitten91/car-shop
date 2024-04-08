@@ -1,0 +1,382 @@
+{
+  "cars": [
+    {
+      "producer": "Toyota",
+      "year_of_production": 2018,
+      "model": "Camry",
+      "horse_power": 203,
+      "mileage_km": 50000
+    },
+    {
+      "producer": "Honda",
+      "year_of_production": 2019,
+      "model": "Civic",
+      "horse_power": 158,
+      "mileage_km": 40000
+    },
+    {
+      "producer": "Ford",
+      "year_of_production": 2017,
+      "model": "Focus",
+      "horse_power": 160,
+      "mileage_km": 60000
+    },
+    {
+      "producer": "Chevrolet",
+      "year_of_production": 2016,
+      "model": "Malibu",
+      "horse_power": 160,
+      "mileage_km": 70000
+    },
+    {
+      "producer": "Nissan",
+      "year_of_production": 2019,
+      "model": "Altima",
+      "horse_power": 188,
+      "mileage_km": 35000
+    },
+    {
+      "producer": "BMW",
+      "year_of_production": 2020,
+      "model": "3 Series",
+      "horse_power": 255,
+      "mileage_km": 20000
+    },
+    {
+      "producer": "Audi",
+      "year_of_production": 2018,
+      "model": "A4",
+      "horse_power": 248,
+      "mileage_km": 45000
+    },
+    {
+      "producer": "Mercedes-Benz",
+      "year_of_production": 2017,
+      "model": "C-Class",
+      "horse_power": 241,
+      "mileage_km": 55000
+    },
+    {
+      "producer": "Volkswagen",
+      "year_of_production": 2018,
+      "model": "Passat",
+      "horse_power": 174,
+      "mileage_km": 40000
+    },
+    {
+      "producer": "Hyundai",
+      "year_of_production": 2019,
+      "model": "Elantra",
+      "horse_power": 147,
+      "mileage_km": 30000
+    },
+    {
+      "producer": "Kia",
+      "year_of_production": 2017,
+      "model": "Optima",
+      "horse_power": 185,
+      "mileage_km": 65000
+    },
+    {
+      "producer": "Subaru",
+      "year_of_production": 2018,
+      "model": "Impreza",
+      "horse_power": 152,
+      "mileage_km": 55000
+    },
+    {
+      "producer": "Mazda",
+      "year_of_production": 2017,
+      "model": "Mazda3",
+      "horse_power": 155,
+      "mileage_km": 60000
+    },
+    {
+      "producer": "Lexus",
+      "year_of_production": 2019,
+      "model": "IS",
+      "horse_power": 241,
+      "mileage_km": 35000
+    },
+    {
+      "producer": "Infiniti",
+      "year_of_production": 2016,
+      "model": "Q50",
+      "horse_power": 208,
+      "mileage_km": 70000
+    },
+    {
+      "producer": "Acura",
+      "year_of_production": 2018,
+      "model": "ILX",
+      "horse_power": 201,
+      "mileage_km": 50000
+    },
+    {
+      "producer": "Tesla",
+      "year_of_production": 2020,
+      "model": "Model 3",
+      "horse_power": 283,
+      "mileage_km": 15000
+    },
+    {
+      "producer": "Volvo",
+      "year_of_production": 2017,
+      "model": "S60",
+      "horse_power": 250,
+      "mileage_km": 60000
+    },
+    {
+      "producer": "Toyota",
+      "year_of_production": 2019,
+      "model": "Corolla",
+      "horse_power": 132,
+      "mileage_km": 40000
+    },
+    {
+      "producer": "Honda",
+      "year_of_production": 2018,
+      "model": "Accord",
+      "horse_power": 192,
+      "mileage_km": 45000
+    },
+    {
+      "producer": "Ford",
+      "year_of_production": 2019,
+      "model": "Fusion",
+      "horse_power": 175,
+      "mileage_km": 30000
+    },
+    {
+      "producer": "Chevrolet",
+      "year_of_production": 2017,
+      "model": "Cruze",
+      "horse_power": 153,
+      "mileage_km": 55000
+    },
+    {
+      "producer": "Nissan",
+      "year_of_production": 2018,
+      "model": "Maxima",
+      "horse_power": 300,
+      "mileage_km": 35000
+    },
+    {
+      "producer": "BMW",
+      "year_of_production": 2017,
+      "model": "5 Series",
+      "horse_power": 248,
+      "mileage_km": 50000
+    },
+    {
+      "producer": "Audi",
+      "year_of_production": 2019,
+      "model": "A6",
+      "horse_power": 335,
+      "mileage_km": 25000
+    },
+    {
+      "producer": "Mercedes-Benz",
+      "year_of_production": 2018,
+      "model": "E-Class",
+      "horse_power": 362,
+      "mileage_km": 20000
+    },
+    {
+      "producer": "Volkswagen",
+      "year_of_production": 2019,
+      "model": "Jetta",
+      "horse_power": 147,
+      "mileage_km": 40000
+    },
+    {
+      "producer": "Hyundai",
+      "year_of_production": 2016,
+      "model": "Sonata",
+      "horse_power": 185,
+      "mileage_km": 70000
+    },
+    {
+      "producer": "Kia",
+      "year_of_production": 2018,
+      "model": "Forte",
+      "horse_power": 147,
+      "mileage_km": 50000
+    },
+    {
+      "producer": "Subaru",
+      "year_of_production": 2020,
+      "model": "Legacy",
+      "horse_power": 182,
+      "mileage_km": 30000
+    },
+    {
+      "producer": "Mazda",
+      "year_of_production": 2019,
+      "model": "Mazda6",
+      "horse_power": 187,
+      "mileage_km": 45000
+    },
+    {
+      "producer": "Lexus",
+      "year_of_production": 2017,
+      "model": "RX",
+      "horse_power": 295,
+      "mileage_km": 55000
+    },
+    {
+      "producer": "Infiniti",
+      "year_of_production": 2019,
+      "model": "Q60",
+      "horse_power": 300,
+      "mileage_km": 35000
+    },
+    {
+      "producer": "Acura",
+      "year_of_production": 2017,
+      "model": "TLX",
+      "horse_power": 206,
+      "mileage_km": 40000
+    },
+    {
+      "producer": "Tesla",
+      "year_of_production": 2018,
+      "model": "Model S",
+      "horse_power": 503,
+      "mileage_km": 20000
+    },
+    {
+      "producer": "Volvo",
+      "year_of_production": 2016,
+      "model": "XC60",
+      "horse_power": 250,
+      "mileage_km": 60000
+    },
+    {
+      "producer": "Toyota",
+      "year_of_production": 2017,
+      "model": "Rav4",
+      "horse_power": 203,
+      "mileage_km": 55000
+    },
+    {
+      "producer": "Honda",
+      "year_of_production": 2016,
+      "model": "Fit",
+      "horse_power": 130,
+      "mileage_km": 65000
+    },
+    {
+      "producer": "Ford",
+      "year_of_production": 2018,
+      "model": "Escape",
+      "horse_power": 179,
+      "mileage_km": 45000
+    },
+    {
+      "producer": "Chevrolet",
+      "year_of_production": 2019,
+      "model": "Equinox",
+      "horse_power": 170,
+      "mileage_km": 40000
+    },
+    {
+      "producer": "Nissan",
+      "year_of_production": 2016,
+      "model": "Rogue",
+      "horse_power": 170,
+      "mileage_km": 60000
+    },
+    {
+      "producer": "BMW",
+      "year_of_production": 2015,
+      "model": "X5",
+      "horse_power": 335,
+      "mileage_km": 70000
+    },
+    {
+      "producer": "Audi",
+      "year_of_production": 2017,
+      "model": "Q7",
+      "horse_power": 333,
+      "mileage_km": 50000
+    },
+    {
+      "producer": "Mercedes-Benz",
+      "year_of_production": 2016,
+      "model": "GLC",
+      "horse_power": 241,
+      "mileage_km": 55000
+    },
+    {
+      "producer": "Volkswagen",
+      "year_of_production": 2015,
+      "model": "Tiguan",
+      "horse_power": 184,
+      "mileage_km": 60000
+    },
+    {
+      "producer": "Hyundai",
+      "year_of_production": 2014,
+      "model": "Tucson",
+      "horse_power": 164,
+      "mileage_km": 80000
+    },
+    {
+      "producer": "Kia",
+      "year_of_production": 2016,
+      "model": "Sportage",
+      "horse_power": 181,
+      "mileage_km": 75000
+    },
+    {
+      "producer": "Subaru",
+      "year_of_production": 2015,
+      "model": "Outback",
+      "horse_power": 175,
+      "mileage_km": 70000
+    },
+    {
+      "producer": "Mazda",
+      "year_of_production": 2014,
+      "model": "CX-5",
+      "horse_power": 187,
+      "mileage_km": 60000
+    },
+    {
+      "producer": "Lexus",
+      "year_of_production": 2015,
+      "model": "NX",
+      "horse_power": 235,
+      "mileage_km": 50000
+    },
+    {
+      "producer": "Infiniti",
+      "year_of_production": 2014,
+      "model": "QX60",
+      "horse_power": 295,
+      "mileage_km": 60000
+    },
+    {
+      "producer": "Acura",
+      "year_of_production": 2015,
+      "model": "MDX",
+      "horse_power": 290,
+      "mileage_km": 70000
+    },
+    {
+      "producer": "Tesla",
+      "year_of_production": 2016,
+      "model": "Model X",
+      "horse_power": 518,
+      "mileage_km": 40000
+    },
+    {
+      "producer": "Volvo",
+      "year_of_production": 2018,
+      "model": "XC90",
+      "horse_power": 316,
+      "mileage_km": 30000
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+$maxWidth: 1200px;
+
+$smallScreen: 800px;
+$mediumScreen: 1000px;
+
+$timerFontSize: 5rem;
+$fontSize: 1.3rem;
+$fontSizeSmall: 1rem;
+
+$colorGreen: #4fb99f;
+$colorDeepGreen: #33ab8d;
+$colorYellow: #f2b134;
+$colorDeepYellow: #dd9614;
+$colorOrange: #ed553b;
+$colorRed: #e44326;
+$colorBlue: #112f41;
+$colorDarkBlue: #222222;
+$colorBlack: #1a1a1a;
+$colorWhite: #ffffff;
+$colorShadow: #ddd;
+
+@mixin boxShadow($radius) {
+  box-shadow: 0 0 $radius $colorDarkBlue;
+}
+
+@mixin fontRoboto {
+  font-family: "Roboto", sans-serif;
+}
+
+@mixin border {
+  border: 2px solid $colorDarkBlue;
+}
+
+@mixin borderRadius {
+  border-radius: 5px;
+}
+
+@mixin infoBox($color) {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background-color: $color;
+  color: $colorWhite;
+  width: 100%;
+  padding: 30px;
+  font-size: $fontSize;
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;
+}
