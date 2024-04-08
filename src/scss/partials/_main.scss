@@ -33,6 +33,36 @@ body {
   }
 }
 
+.d {
+  &-none {
+    display: none;
+  }
+}
+
+.bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1040;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(29, 29, 29, 0.4);
+  backdrop-filter: blur(2px);
+}
+
+.form {
+  @include boxShadow(8px);
+  position: fixed;
+  border-radius: 5px;
+  top: 50%;
+  left: 50%;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid $colorBlue;
+  width: 60vw;
+  height: 70vw;
+  transform: translate(-50%, -50%);
+}
+
 .car {
   min-height: 150px;
   border-radius: 5px;

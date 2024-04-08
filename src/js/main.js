@@ -3,12 +3,15 @@
 // import DATA_NAME from "./_data.js";
 
 const $cars = document.querySelector("#cars");
+const $form = document.querySelector("#c-form");
+
 $cars.addEventListener("click", (e) => {
-  if (e.target.parentElement.dataset.producer) {
-    console.log(e.target.parentElement.dataset.producer);
-  } else {
-    console.log(e.target.dataset.producer);
-  }
+  const elemDataset = e.target.parentElement.dataset
+    ? e.target.parentElement.dataset
+    : e.target.dataset;
+
+  $form.classList.toggle("d-none");
+  // $form.showModal();
 });
 
 const getCars = async () => {
