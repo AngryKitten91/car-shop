@@ -38,9 +38,23 @@ body {
   border-radius: 5px;
   border: 1px solid $colorBlue;
   padding: 20px;
+  @include boxShadow(8px);
   &-name {
-    & > h1 {
-      font-size: 1.5rem;
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (max-width: $smallScreen) {
+  .c {
+    &-flex {
+      display: flex;
+      flex-wrap: wrap;
+
+      align-items: center;
+      gap: 20px 0;
+      & > * {
+        width: 100%;
+      }
     }
   }
 }

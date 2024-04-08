@@ -3,6 +3,13 @@
 // import DATA_NAME from "./_data.js";
 
 const $cars = document.querySelector("#cars");
+$cars.addEventListener("click", (e) => {
+  if (e.target.parentElement.dataset.producer) {
+    console.log(e.target.parentElement.dataset.producer);
+  } else {
+    console.log(e.target.dataset.producer);
+  }
+});
 
 const getCars = async () => {
   try {
@@ -22,12 +29,12 @@ const carSchema = (
   mileage_km
 ) => {
   return `
-  <div class="car">
-    <div class="car-name"><h1>${producer}</h1></div>
-    <div class="car-name">${model}</div>
-    <div class="car-name">${year_of_production}</div>
-    <div class="car-name">${horse_power} HP</div>
-    <div class="car-name">${mileage_km} km</div>
+  <div class="car" data-producer="${producer}" data-model="${model}" data-hp="${horse_power}" data-mileage="${mileage_km}" data-year="${year_of_production}">
+    <h1 class="car-name">${producer}</h1>
+    <div class="car-model">${model}</div>
+    <div class="car-year">${year_of_production}</div>
+    <div class="car-power">${horse_power} HP</div>
+    <div class="car-mileage">${mileage_km} km</div>
   </div>`;
 };
 

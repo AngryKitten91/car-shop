@@ -20,7 +20,7 @@ $colorWhite: #ffffff;
 $colorShadow: #ddd;
 
 @mixin boxShadow($radius) {
-  box-shadow: 0 0 $radius $colorDarkBlue;
+  box-shadow: 0 0 $radius 0 $colorDarkBlue;
 }
 
 @mixin fontRoboto {
