@@ -6,7 +6,6 @@ body {
   // background-color: $colorBlue;
 }
 
-
 .c {
   &-wrap {
     max-width: $maxWidth;
@@ -16,8 +15,13 @@ body {
 
   &-flex {
     display: flex;
+    flex-wrap: wrap;
+
     align-items: center;
     gap: 20px;
+    & > * {
+      width: calc((100% / 3) - 20px);
+    }
 
     &--center {
       justify-content: center;
@@ -29,4 +33,14 @@ body {
   }
 }
 
-
+.car {
+  min-height: 150px;
+  border-radius: 5px;
+  border: 1px solid $colorBlue;
+  padding: 20px;
+  &-name {
+    & > h1 {
+      font-size: 1.5rem;
+    }
+  }
+}
