@@ -22,6 +22,10 @@ body {
   animation: fadeIn 0.5s;
 }
 
+.bold {
+  font-weight: bold;
+}
+
 .c {
   display: flex;
   &-wrap {
@@ -111,7 +115,8 @@ body {
   background-color: rgb(255, 255, 255);
   // border: 1px solid $colorBlue;
   width: 60vw;
-  height: 80vh;
+  max-width: 1200px;
+  height: 90vh;
   transform: translate(-50%, -50%);
   scrollbar-width: 10px;
   scrollbar-color: $colorGreen;
@@ -153,6 +158,25 @@ body {
   }
 }
 
+@media screen and (max-width: $mediumScreen) {
+  .c {
+    &-flex {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 20px;
+      & > * {
+        width: calc(50% - 10px);
+      }
+    }
+  }
+
+  .form {
+    width: 90vw;
+    height: 90vh;
+  }
+}
+
 @media screen and (max-width: $smallScreen) {
   .c {
     &-flex {
@@ -164,6 +188,11 @@ body {
         width: 100%;
       }
     }
+  }
+
+  .form {
+    width: 90vw;
+    height: 90vh;
   }
 }
 
