@@ -1,8 +1,10 @@
 // import Timer from "./_timerClass.js";
-// import LOCALSTORAGE from "./_utils.js";
 // import DATA_NAME from "./_data.js";
+import LOCALSTORAGE from "./_utils.js";
 import cars from "./_cars";
 import carSchema from "./_carSchema";
+
+const localStorage_KEY = "carFormOpen";
 
 class Form {
   constructor(isOn = true) {
@@ -24,8 +26,8 @@ class Form {
     //TODO: clear b4 close
   };
 }
-console.log(JSON.parse(localStorage.getItem("carFormOpen")));
-if (JSON.parse(localStorage.getItem("carFormOpen")) === true) {
+console.log(JSON.parse(LOCALSTORAGE.read(localStorage_KEY)));
+if (JSON.parse(LOCALSTORAGE.read(localStorage_KEY)) === true) {
   new Form();
 }
 
@@ -61,7 +63,7 @@ function singleExtra(elem, i) {
 $cars.addEventListener("click", (e) => {
   const targetID = e.target.id;
   if (targetID === "buy") {
-    localStorage.setItem("carFormOpen", true);
+    LOCALSTORAGE.write(localStorage_KEY, true);
     const elemDataset = e.target.parentElement.dataset;
     const { producer, model, year, mileage, hp, uuid } = elemDataset;
     console.log(uuid);
@@ -77,7 +79,7 @@ $cars.addEventListener("click", (e) => {
 
 // close form
 $formBtnClose.addEventListener("click", () => {
-  localStorage.setItem("carFormOpen", false);
+  LOCALSTORAGE.write(localStorage_KEY, false);
   $formContainer.classList.toggle("d-none");
 });
 
