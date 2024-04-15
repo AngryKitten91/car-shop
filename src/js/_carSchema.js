@@ -4,10 +4,11 @@ const carSchema = (
   model,
   horse_power,
   mileage_km,
-  extras
+  extras,
+  uuid
 ) => {
   return `
-    <div class="car" data-extras="${extras}" data-producer="${producer}" data-model="${model}" data-hp="${horse_power}" data-mileage="${mileage_km}" data-year="${year_of_production}">
+    <div class="car" data-uuid=${uuid} data-extras="${extras}" data-producer="${producer}" data-model="${model}" data-hp="${horse_power}" data-mileage="${mileage_km}" data-year="${year_of_production}">
     <img class="car-img img" src="https://placehold.co/600x400" />
       <h1 class="car-name">${producer}</h1>
       <div class="car-model"><span class="bold">Model:</span> ${model}</div>

@@ -6,20 +6,30 @@ import carSchema from "./_carSchema";
 
 class Form {
   constructor(isOn = true) {
-    this.isOn = isOn;
     this.$formContainer = document.querySelector("#c-form");
+    this.$formBtnClose = document.querySelector("#close");
+
+    this.isOn = isOn;
     this.handleLoad();
   }
-
+  prepareDOM = () => {
+    //TODO: Prepare form dom
+  };
   handleLoad = () => {
     if (this.isOn === true) {
       this.$formContainer.classList.toggle("d-none");
     }
   };
+  clear = () => {
+    //TODO: clear b4 close
+  };
+}
+console.log(JSON.parse(localStorage.getItem("carFormOpen")));
+if (JSON.parse(localStorage.getItem("carFormOpen")) === true) {
+  new Form();
 }
 
-// new Form();
-
+// DOM objects
 const $cars = document.querySelector("#cars");
 const $formContainer = document.querySelector("#c-form");
 const $form = document.querySelector("#form-content");
@@ -39,18 +49,22 @@ for (let i = 0; i < 14; i++) {
   $deliveryDateSelect.add(option);
 }
 
+// extra schema
 function singleExtra(elem, i) {
   return `<div>
-  <input type="checkbox" id="extra${i}" name="extra${i}" />
+  <input class="input-field" type="checkbox" id="extra${i}" name="extra${i}" />
   <label for="scales">${elem}</label>
   </div>`;
 }
 
+// open car form
 $cars.addEventListener("click", (e) => {
   const targetID = e.target.id;
   if (targetID === "buy") {
+    localStorage.setItem("carFormOpen", true);
     const elemDataset = e.target.parentElement.dataset;
-    const { producer, model, year, mileage, hp } = elemDataset;
+    const { producer, model, year, mileage, hp, uuid } = elemDataset;
+    console.log(uuid);
     $form.innerHTML = `<p>${producer} ${model}</p><p>${year}, ${mileage}km, ${hp}HP</p>`;
     const extras = elemDataset.extras.split(",");
     $extras.innerHTML = "";
@@ -61,16 +75,20 @@ $cars.addEventListener("click", (e) => {
   }
 });
 
+// close form
 $formBtnClose.addEventListener("click", () => {
-  console.log("click");
+  localStorage.setItem("carFormOpen", false);
   $formContainer.classList.toggle("d-none");
 });
 
+// form submit
 $submitForm.addEventListener("submit", (e) => {
   e.preventDefault();
-  console.log(e.target.elements.length);
+  const $inputs = document.querySelectorAll(".input-field");
+  console.log([...$inputs].map((e) => e));
 });
 
+// form on change
 $submitForm.addEventListener("change", (e) => {
   console.log(e.target, e.target.value, e.target.checked);
 });
@@ -84,6 +102,7 @@ cars.map(
     horse_power,
     mileage_km,
     extras,
+    uuid,
   }) => {
     $cars.insertAdjacentHTML(
       "beforeend",
@@ -93,7 +112,8 @@ cars.map(
         model,
         horse_power,
         mileage_km,
-        extras
+        extras,
+        uuid
       )
     );
   }
