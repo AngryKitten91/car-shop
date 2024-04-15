@@ -5,7 +5,8 @@ const carSchema = (
   horse_power,
   mileage_km,
   extras,
-  uuid
+  uuid,
+  price
 ) => {
   return `
     <div class="car" data-uuid=${uuid} data-extras="${extras}" data-producer="${producer}" data-model="${model}" data-hp="${horse_power}" data-mileage="${mileage_km}" data-year="${year_of_production}">
@@ -15,6 +16,7 @@ const carSchema = (
       <div class="car-year"><span class="bold">Production Year:</span> ${year_of_production}</div>
       <div class="car-power"><span class="bold">Horde Power:</span> ${horse_power} HP</div>
       <div class="car-mileage"><span class="bold">Mileage:</span> ${mileage_km} km</div>
+      <div class="car-price"><span class="bold">Price:</span> ${price}$</div>
       <div id="buy" class="car-buy btn btn-buy bold">BUY</div>
     </div>`;
 };

@@ -105,6 +105,7 @@ cars.map(
     mileage_km,
     extras,
     uuid,
+    price,
   }) => {
     $cars.insertAdjacentHTML(
       "beforeend",
@@ -115,7 +116,8 @@ cars.map(
         horse_power,
         mileage_km,
         extras,
-        uuid
+        uuid,
+        price
       )
     );
   }
