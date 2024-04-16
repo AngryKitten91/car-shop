@@ -1,6 +1,6 @@
 export default class LOCALSTORAGE {
   static write(key, value) {
-    return JSON.stringify(localStorage.setItem(key, value));
+    localStorage.setItem(key, JSON.stringify(value));
   }
 
   static read(key) {
