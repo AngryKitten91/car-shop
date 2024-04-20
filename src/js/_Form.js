@@ -1,6 +1,7 @@
 import LOCALSTORAGE from "./_utils";
 import { localStorage_KEY } from "./_Keys";
 import cars from "./_cars";
+import accessories from "./_accessories";
 
 export default class Form {
   constructor(isOn = true, uuid) {
@@ -9,9 +10,11 @@ export default class Form {
 
     this.uuid = uuid;
     this.isOn = isOn;
+    this.extras = [];
 
     this.getDataFromUUID();
     this.prepareDOM();
+    this.addExtras();
     this.addDeliveryDate();
     this.handleListeners();
     this.render();
@@ -82,11 +85,12 @@ export default class Form {
         <button type="submit">Wyślij</button>
       </form>`;
     this.$form.innerHTML = fromContent;
-  };
-  handleListeners = () => {
     this.$formBtnClose = document.querySelector("#close");
     this.$submitForm = document.querySelector("#form");
-
+    this.$deliveryDateSelect = document.querySelector("#deliveryDate");
+    this.$extras = document.querySelector("#extras");
+  };
+  handleListeners = () => {
     this.$formBtnClose.addEventListener("click", () => {
       LOCALSTORAGE.write(localStorage_KEY, {
         isOn: false,
@@ -104,14 +108,29 @@ export default class Form {
     this.$submitForm.addEventListener("change", (e) => {
       console.log(e.target, e.target.value, e.target.checked);
     });
+
+    this.$extra = document.querySelectorAll(".extra");
+    this.$extra.forEach((element) => {
+      element.addEventListener("click", (e) => {
+        e.currentTarget.classList.toggle("extra-pick");
+        const clickExtraId = e.currentTarget.dataset.id;
+        if (this.extras.includes(clickExtraId)) {
+          const newExtraArr = this.extras.filter((elem) => {
+            return elem !== clickExtraId;
+          });
+          this.extras = newExtraArr;
+        } else {
+          this.extras.push(clickExtraId);
+        }
+        console.log(this.extras);
+      });
+    });
   };
   getDataFromUUID = () => {
     this.car = cars.find(({ uuid }) => this.uuid === uuid);
     // console.log(this.car);
   };
   addDeliveryDate = () => {
-    this.$deliveryDateSelect = document.querySelector("#deliveryDate");
-
     const today = new Date();
     for (let i = 0; i < 14; i++) {
       const date = new Date(today);
@@ -121,6 +140,14 @@ export default class Form {
       option.value = date.toISOString().split("T")[0]; // Format: YYYY-MM-DD
       this.$deliveryDateSelect.add(option);
     }
+  };
+  addExtras = () => {
+    accessories.forEach(({ id, name, price }) => {
+      this.$extras.insertAdjacentHTML(
+        "beforeend",
+        `<div data-id="${id}" data-price="${price}" class="extra"><p>${name}</p><p class="extra-price">+${price}$</p></div>`
+      );
+    });
   };
   render = () => {
     if (this.isOn === true) {

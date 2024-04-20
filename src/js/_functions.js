@@ -1,4 +1,44 @@
-const carSchema = (
+// generate cars list
+export const generateCarList = (arr, targetElem, filter) => {
+  targetElem.innerHTML = "";
+  arr
+    .filter(({ producer, model }) => {
+      if (filter) {
+        const carName = `${producer} ${model}`.toLowerCase();
+        const userFilter = filter.toLowerCase();
+        return carName.includes(userFilter);
+      }
+      return true;
+    })
+    .forEach(
+      ({
+        producer,
+        year_of_production,
+        model,
+        horse_power,
+        mileage_km,
+        extras,
+        uuid,
+        price,
+      }) => {
+        targetElem.insertAdjacentHTML(
+          "beforeend",
+          carSchema(
+            producer,
+            year_of_production,
+            model,
+            horse_power,
+            mileage_km,
+            extras,
+            uuid,
+            price
+          )
+        );
+      }
+    );
+};
+
+export const carSchema = (
   producer,
   year_of_production,
   model,
@@ -20,5 +60,3 @@ const carSchema = (
       <div id="buy" class="car-buy btn btn-buy bold">BUY</div>
     </div>`;
 };
-
-export default carSchema;
