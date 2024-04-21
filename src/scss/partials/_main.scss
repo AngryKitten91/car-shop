@@ -11,6 +11,10 @@ body {
   padding: 10px;
   border: 1px solid $colorBlack;
   border-radius: 5px;
+  margin: 5px;
+  &:hover {
+    cursor: pointer;
+  }
   &-pick {
     background-color: $colorGreen;
   }
