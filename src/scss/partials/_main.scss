@@ -6,12 +6,39 @@ body {
   // background-color: $colorBlue;
 }
 
-.extra {
-  display: inline-block;
+.header {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 10px 0 20px 0;
+}
+
+#filter {
+  @include boxShadow;
+  width: 100%;
   padding: 10px;
-  border: 1px solid $colorBlack;
+  margin: 20px 0;
   border-radius: 5px;
-  margin: 5px;
+  border: none;
+}
+
+.input {
+  @include boxShadow;
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: none;
+}
+
+.extra {
+  // display: inline-block;
+  @include boxShadow;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  // border: 1px solid $colorBlack;
+  border-radius: 5px;
+  margin: 15px 0;
   &:hover {
     cursor: pointer;
   }
@@ -19,8 +46,8 @@ body {
     background-color: $colorGreen;
   }
   &-price {
-    font-size: 0.75rem;
-    text-align: right;
+    // font-size: 0.75rem;
+    // text-align: right;
   }
 }
 
@@ -92,6 +119,10 @@ body {
 
 .btn {
   cursor: pointer;
+  padding: 10px;
+  border-radius: 10px;
+  width: 100%;
+  @include boxShadow;
 
   &-close {
     border-radius: 20px;
@@ -120,6 +151,16 @@ body {
       filter: brightness(120%);
     }
   }
+  &-send {
+    text-align: center;
+    background-color: $colorGreen;
+    color: #fff;
+    border: none;
+    transition: all 0.2s ease;
+    &:hover {
+      filter: brightness(120%);
+    }
+  }
 }
 
 .form {
@@ -138,7 +179,9 @@ body {
   transform: translate(-50%, -50%);
   scrollbar-width: 10px;
   scrollbar-color: $colorGreen;
-
+  &-section {
+    margin: 50px 0;
+  }
   /* width */
   &::-webkit-scrollbar {
     width: 10px;

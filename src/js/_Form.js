@@ -1,5 +1,5 @@
 import LOCALSTORAGE from "./_utils";
-import { localStorage_KEY } from "./_Keys";
+import { localStorage_KEY, extrasID, formData } from "./_Keys";
 import cars from "./_cars";
 import accessories from "./_accessories";
 
@@ -11,14 +11,42 @@ export default class Form {
     this.uuid = uuid;
     this.isOn = isOn;
     this.extras = [];
+    this.firstName = "";
+    this.lastName = "";
+    this.money = true;
+    this.leasing = false;
+    this.date = "";
 
-    this.getDataFromUUID();
+    this.getDataOnLoad();
     this.prepareDOM();
     this.addExtras();
     this.addDeliveryDate();
     this.handleListeners();
+    this.handlePrice();
     this.render();
   }
+
+  getDataOnLoad = () => {
+    // get car data
+    this.car = cars.find(({ uuid }) => this.uuid === uuid);
+
+    // load localstorage form data
+    const extras = LOCALSTORAGE.read(extrasID);
+    this.extras = extras ? extras : [];
+
+    const dataForm = LOCALSTORAGE.read(formData);
+
+    if (dataForm) {
+      const [firstName, lastName, money, leasing, date] =
+        LOCALSTORAGE.read(formData);
+      console.log(lastName);
+      this.firstName = firstName;
+      this.lastName = lastName;
+      this.money = money;
+      this.leasing = leasing;
+      this.date = date;
+    }
+  };
   prepareDOM = () => {
     const {
       producer,
@@ -29,31 +57,37 @@ export default class Form {
       price,
     } = this.car;
     const fromContent = `<div id="close" class="btn btn-close c c-flex--center">x</div>
-      <div id="form-content">
-      <p class="bold">${producer} ${model}</p>
+      <div class="form-section">
+      <p class="header">${producer} ${model}</p>
       <p>${year_of_production}, ${mileage_km}km, ${horse_power}HP</p>
       <p class="bold">${price}$</p>
       </div>
       <form id="form">
-        <div>
+        <div class="form-section">
           <label for="firstName">Imię:</label><br />
           <input
-            class="input-field"
+            class="input-field input"
             type="text"
             id="firstName"
+            maxlength="20"
             name="firstName"
+            placeholder="Wprowadź Imię..."
+            value="${this.firstName}"
             required
           /><br />
           <label for="secondName">Nazwisko:</label><br />
           <input
-            class="input-field"
+            class="input-field input"
             type="text"
             id="secondName"
+            maxlength="20"
             name="secondName"
+            placeholder="Wprowadź Nazwisko..."
+            value="${this.lastName}"
             required
           /><br />
         </div>
-        <div>
+        <div class="form-section">
           <label for="financing">Wybierz finansowanie:</label><br />
           <input
             class="input-field"
@@ -61,7 +95,7 @@ export default class Form {
             id="cash"
             name="financing"
             value="gotówka"
-            checked
+            ${this.money ? "checked" : ""}
           />
           <label for="cash">Gotówka</label><br />
           <input
@@ -70,27 +104,41 @@ export default class Form {
             id="leasing"
             name="financing"
             value="leasing"
+            ${this.leasing ? "checked" : ""}
+
           />
           <label for="leasing">Leasing</label><br />
         </div>
   
-        <div id="extras"></div>
+        <div class="form-section" id="extras"><p>Dodatkowe wyposażenie:</p></div>
   
-        <div>
+        <div class="form-section">
           <label for="deliveryDate">Data dostawy:</label><br />
-          <select class="input-field" id="deliveryDate" name="deliveryDate">
-            <!-- JavaScript is used to generate delivery dates dynamically -->
+          <select class="input-field" value="${
+            this.date
+          }" id="deliveryDate" name="deliveryDate">
           </select>
         </div>
-        <button type="submit">Wyślij</button>
+        <div class="form-section" id="price">
+        
+        </div>
+        <div class="form-section">
+        <button class="btn btn-send" type="submit">ZAMÓW</button>
+        </div>
       </form>`;
     this.$form.innerHTML = fromContent;
     this.$formBtnClose = document.querySelector("#close");
     this.$submitForm = document.querySelector("#form");
+    this.$inputs = document.querySelectorAll(".input-field");
     this.$deliveryDateSelect = document.querySelector("#deliveryDate");
     this.$extras = document.querySelector("#extras");
+    this.$price = document.querySelector("#price");
   };
+
+  //   event handlers
   handleListeners = () => {
+    //   close butotn
+    // TODO: ADD GO BACK BUTTON
     this.$formBtnClose.addEventListener("click", () => {
       LOCALSTORAGE.write(localStorage_KEY, {
         isOn: false,
@@ -99,16 +147,26 @@ export default class Form {
       this.$formContainer.classList.toggle("d-none");
     });
 
+    //form submit
     this.$submitForm.addEventListener("submit", (e) => {
       e.preventDefault();
       const $inputs = document.querySelectorAll(".input-field");
-      console.log([...$inputs].map((e) => e));
     });
 
-    this.$submitForm.addEventListener("change", (e) => {
-      console.log(e.target, e.target.value, e.target.checked);
+    // input change
+    this.$submitForm.addEventListener("change", () => {
+      const [firstName, lastName, money, leasing, date] = [...this.$inputs];
+      const inputs = [
+        firstName.value,
+        lastName.value,
+        money.checked,
+        leasing.checked,
+        date.value,
+      ];
+      LOCALSTORAGE.write(formData, inputs);
     });
 
+    // extras change
     this.$extra = document.querySelectorAll(".extra");
     this.$extra.forEach((element) => {
       element.addEventListener("click", (e) => {
@@ -122,14 +180,12 @@ export default class Form {
         } else {
           this.extras.push(clickExtraId);
         }
-        console.log(this.extras);
+        LOCALSTORAGE.write(extrasID, this.extras);
+        this.handlePrice();
       });
     });
   };
-  getDataFromUUID = () => {
-    this.car = cars.find(({ uuid }) => this.uuid === uuid);
-    // console.log(this.car);
-  };
+
   addDeliveryDate = () => {
     const today = new Date();
     for (let i = 0; i < 14; i++) {
@@ -143,17 +199,40 @@ export default class Form {
   };
   addExtras = () => {
     accessories.forEach(({ id, name, price }) => {
+      const isIDused = this.extras.includes(id);
       this.$extras.insertAdjacentHTML(
         "beforeend",
-        `<div data-id="${id}" data-price="${price}" class="extra"><p>${name}</p><p class="extra-price">+${price}$</p></div>`
+        `<div data-id="${id}" data-price="${price}" class="extra ${
+          isIDused ? "extra-pick" : ""
+        }"><p>${name}</p><p class="extra-price">+${price}$</p></div>`
       );
     });
   };
+
+  handlePrice = () => {
+    const carPrice = this.car.price;
+    const carExtras = this.extras
+      .map((e) => {
+        const extraSearch = accessories.find(({ id }) => {
+          return id === e;
+        });
+        return extraSearch;
+      })
+      .map(({ price }) => price)
+      .reduce((a, b) => a + b, 0);
+
+    const totalPrice = carPrice + carExtras;
+
+    this.totalPrice = totalPrice;
+    this.$price.innerHTML = `<p>TOTAL: <strong>${totalPrice}</strong>$</p>`;
+  };
+
   render = () => {
     if (this.isOn === true) {
       this.$formContainer.classList.toggle("d-none");
     }
   };
+
   clear = () => {
     //TODO: clear b4 close
   };

@@ -1,12 +1,14 @@
 import LOCALSTORAGE from "./_utils";
 import cars from "./_cars";
-import accessories from "./_accessories";
+// import accessories from "./_accessories";
 import { generateCarList } from "./_functions";
 import Form from "./_Form";
 
 import { localStorage_KEY, searchInput } from "./_Keys";
 
-const formStatusCheck = LOCALSTORAGE.read(localStorage_KEY);
+const formStatusCheck = LOCALSTORAGE.read(localStorage_KEY)
+  ? LOCALSTORAGE.read(localStorage_KEY)
+  : false;
 const inputHistory = LOCALSTORAGE.read(searchInput);
 
 // DOM objects
