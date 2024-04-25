@@ -2,6 +2,7 @@ import LOCALSTORAGE from "./_utils";
 import { localStorage_KEY, extrasID, formData } from "./_Keys";
 import cars from "./_cars";
 import accessories from "./_accessories";
+import { carSummarySchema, formSchema } from "./_functions";
 
 export default class Form {
   constructor(isOn = true, uuid) {
@@ -55,87 +56,20 @@ export default class Form {
       horse_power,
       price,
     } = this.car;
-    const fromContent = `
-    <div id="close" class="btn btn-close close c c-flex--center">x</div>
-<div id="form-content">
-      <div class="form-section form-flex">
-      <div>
-      <p class="header">${producer} ${model}</p>
-      <p>Rok: ${year_of_production},</p>
-      <p>Przebieg: ${mileage_km}km,</p>
-      <p>Moc: ${horse_power}HP</p>
-      <p class="bold">Cena: ${price}$</p>
-      </div>
-      <div>
-      <img class="car-img img" src="https://placehold.co/600x400" />
-      </div>
-      </div>
-      <form id="form">
-        <div class="form-section">
-          <label for="firstName">Imię:</label><br />
-          <input
-            class="input-field input"
-            type="text"
-            id="firstName"
-            maxlength="20"
-            name="firstName"
-            placeholder="Wprowadź Imię..."
-            value="${this.firstName}"
-            required
-          /><br />
-          <label for="secondName">Nazwisko:</label><br />
-          <input
-            class="input-field input"
-            type="text"
-            id="secondName"
-            maxlength="20"
-            name="secondName"
-            placeholder="Wprowadź Nazwisko..."
-            value="${this.lastName}"
-            required
-          /><br />
-        </div>
-        <div class="form-section">
-          <label for="financing">Wybierz finansowanie:</label><br />
-          <input
-            class="input-field"
-            type="radio"
-            id="cash"
-            name="financing"
-            value="gotówka"
-            ${this.money ? "checked" : ""}
-          />
-          <label for="cash">Gotówka</label><br />
-          <input
-            class="input-field"
-            type="radio"
-            id="leasing"
-            name="financing"
-            value="leasing"
-            ${this.leasing ? "checked" : ""}
 
-          />
-          <label for="leasing">Leasing</label><br />
-        </div>
-  
-        <div class="form-section" id="extras"><p>Dodatkowe wyposażenie:</p></div>
-  
-        <div class="form-section">
-          <label for="deliveryDate">Data dostawy:</label><br />
-          <select class="input-field" id="deliveryDate" name="deliveryDate">
-          </select>
-        </div>
-        <div class="form-section" id="price">
-        
-        </div>
-        <div class="form-section">
-        <button class="btn btn-send" type="submit">ZAMÓW</button>
-        </div>
-        </div>
+    this.$form.innerHTML = formSchema(
+      producer,
+      model,
+      year_of_production,
+      mileage_km,
+      horse_power,
+      price,
+      this.firstName,
+      this.lastName,
+      this.money,
+      this.leasing
+    );
 
-        <div class="close close-bottom"><p class="mt-50"><<< Powrót do listy</p></div>
-      </form>`;
-    this.$form.innerHTML = fromContent;
     this.$formContent = document.querySelector("#form-content");
     this.$formBtnClose = document.querySelectorAll(".close");
     this.$submitForm = document.querySelector("#form");
@@ -145,9 +79,8 @@ export default class Form {
     this.$price = document.querySelector("#price");
   };
 
-  //   event handlers
+  // event handlers
   handleListeners = () => {
-    // TODO: ADD GO BACK BUTTON
     this.$formBtnClose.forEach((e) =>
       e.addEventListener("click", () => {
         LOCALSTORAGE.write(localStorage_KEY, {
@@ -173,27 +106,16 @@ export default class Form {
         price,
       } = this.car;
 
-      const formSum = `
-      <p class="header">Dziękujemy za Zakup!</p>
-      <p class="bold">Podsumowanie:</p>
-      <div class="form-section form-flex">
-      <div>
-      <p class="header">${producer} ${model}</p>
-      <p>Rok: ${year_of_production},</p>
-      <p>Przebieg: ${mileage_km}km,</p>
-      <p>Moc: ${horse_power}HP</p>
-      <p>Data dostawy: ${this.date}</p>
-      <p>Opłata: ${this.money ? "Gotówka" : "Leasing"}</p>
-      <p class="bold">Cena: ${price}$</p>
-      </div>
-      <div>
-      <img class="car-img img" src="https://placehold.co/600x400" />
-      </div>
-      </div>
-      <p>Dodatkowe Wyposażenie:</p>
-      `;
-
-      this.$formContent.innerHTML = formSum;
+      this.$formContent.innerHTML = carSummarySchema(
+        producer,
+        model,
+        year_of_production,
+        mileage_km,
+        horse_power,
+        this.date,
+        this.money,
+        price
+      );
 
       if (this.extras.length === 0) {
         this.$formContent.insertAdjacentHTML(
@@ -272,6 +194,7 @@ export default class Form {
       this.$deliveryDateSelect.add(option);
     }
   };
+
   addExtras = () => {
     accessories.forEach(({ id, name, price }) => {
       const isIDused = this.extras.includes(id);

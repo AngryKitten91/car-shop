@@ -6,15 +6,17 @@ import Form from "./_Form";
 
 import { localStorage_KEY, searchInput } from "./_Keys";
 
+// check form opened / closed
 const formStatusCheck = LOCALSTORAGE.read(localStorage_KEY)
   ? LOCALSTORAGE.read(localStorage_KEY)
   : false;
+  
+// check filter
 const inputHistory = LOCALSTORAGE.read(searchInput);
 
 // DOM objects
 const $cars = document.querySelector("#cars");
 const $filter = document.querySelector("#filter");
-// const $extras = document.querySelector("#extras");
 
 // check form open onload
 if (formStatusCheck.isOn === true) {
