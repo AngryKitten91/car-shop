@@ -1,16 +1,17 @@
 import LOCALSTORAGE from "./_utils";
 import cars from "./_cars";
+import { onKonamiCode } from "./_functions";
 // import accessories from "./_accessories";
 import { generateCarList } from "./_functions";
 import Form from "./_Form";
 
-import { localStorage_KEY, searchInput } from "./_Keys";
+import { localStorage_KEY, searchInput } from "./_keys";
 
 // check form opened / closed
 const formStatusCheck = LOCALSTORAGE.read(localStorage_KEY)
   ? LOCALSTORAGE.read(localStorage_KEY)
   : false;
-  
+
 // check filter
 const inputHistory = LOCALSTORAGE.read(searchInput);
 
@@ -46,4 +47,9 @@ $filter.addEventListener("input", (e) => {
   const userFilter = e.target.value;
   LOCALSTORAGE.write(searchInput, userFilter);
   generateCarList(cars, $cars, userFilter);
+});
+
+// easter egg added
+onKonamiCode(function () {
+  alert("Congratulations!");
 });
