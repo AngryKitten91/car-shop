@@ -6,19 +6,61 @@ body {
   // background-color: $colorBlue;
 }
 
+footer {
+  background-color: #1e1e1e;
+  color: #fff;
+  padding: 50px;
+  text-align: center;
+  width: 100%;
+  margin-top: 50px;
+}
+.footer {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  font-size: 1rem;
+  &-title {
+    margin: 10px 0;
+    font-weight: bold;
+    font-size: 1.25rem;
+  }
+  & > * {
+    width: calc(100% / 3);
+  }
+}
+/* Stylowanie linków w stopce */
+footer a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+footer a:hover {
+  color: #ffc107; /* Zmiana koloru na żółty po najechaniu myszką */
+}
+
+.pb-20 {
+  padding-bottom: 20px;
+}
+
 .header {
   font-size: 2rem;
   font-weight: bold;
   margin: 10px 0 20px 0;
 }
 
-#filter {
+#sumExtra {
+  margin: 30px 0;
+}
+
+#filter,
+#deliveryDate {
   @include boxShadow;
   width: 100%;
   padding: 10px;
   margin: 20px 0;
   border-radius: 5px;
   border: none;
+  cursor: pointer;
 }
 
 .input {
@@ -36,14 +78,15 @@ body {
   display: flex;
   justify-content: space-between;
   padding: 10px;
-  // border: 1px solid $colorBlack;
   border-radius: 5px;
   margin: 15px 0;
+  transition: all 0.2s ease;
   &:hover {
     cursor: pointer;
   }
   &-pick {
-    background-color: $colorGreen;
+    background-color: $colorOrange;
+    color: $colorWhite;
   }
   &-price {
     // font-size: 0.75rem;
@@ -117,6 +160,25 @@ body {
   backdrop-filter: blur(2px);
 }
 
+#close {
+  position: fixed;
+  right: 10px;
+  top: 10px;
+}
+
+.close {
+  cursor: pointer;
+  &-bottom {
+    text-align: center;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+
+    &:hover {
+      color: $colorRed;
+    }
+  }
+}
+
 .btn {
   cursor: pointer;
   padding: 10px;
@@ -127,9 +189,7 @@ body {
   &-close {
     border-radius: 20px;
     padding: 20px;
-    position: absolute;
-    right: 10px;
-    top: 10px;
+
     width: 20px;
     height: 20px;
     color: #fff;
@@ -182,6 +242,13 @@ body {
   &-section {
     margin: 50px 0;
   }
+  &-flex {
+    display: flex;
+    align-items: center;
+    & > * {
+      width: 50%;
+    }
+  }
   /* width */
   &::-webkit-scrollbar {
     width: 10px;
@@ -214,7 +281,7 @@ body {
     font-size: 1.5rem;
   }
   &-img {
-    margin-bottom: 20px;
+    // margin-bottom: 20px;
     border-radius: 5px;
   }
 }
@@ -251,9 +318,29 @@ body {
     }
   }
 
+  .footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    font-size: 1rem;
+    & > * {
+      width: 100%;
+    }
+  }
+
   .form {
     width: 90vw;
     height: 90vh;
+    &-flex {
+      display: flex;
+      flex-wrap: wrap;
+      & > * {
+        width: 100%;
+        &:last-child {
+          order: -1;
+        }
+      }
+    }
   }
 }
 

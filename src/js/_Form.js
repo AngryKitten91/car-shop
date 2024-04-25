@@ -23,7 +23,7 @@ export default class Form {
     this.addDeliveryDate();
     this.handleListeners();
     this.handlePrice();
-    this.render();
+    this.show();
   }
 
   getDataOnLoad = () => {
@@ -39,7 +39,6 @@ export default class Form {
     if (dataForm) {
       const [firstName, lastName, money, leasing, date] =
         LOCALSTORAGE.read(formData);
-      console.log(lastName);
       this.firstName = firstName;
       this.lastName = lastName;
       this.money = money;
@@ -56,11 +55,20 @@ export default class Form {
       horse_power,
       price,
     } = this.car;
-    const fromContent = `<div id="close" class="btn btn-close c c-flex--center">x</div>
-      <div class="form-section">
+    const fromContent = `
+    <div id="close" class="btn btn-close close c c-flex--center">x</div>
+<div id="form-content">
+      <div class="form-section form-flex">
+      <div>
       <p class="header">${producer} ${model}</p>
-      <p>${year_of_production}, ${mileage_km}km, ${horse_power}HP</p>
-      <p class="bold">${price}$</p>
+      <p>Rok: ${year_of_production},</p>
+      <p>Przebieg: ${mileage_km}km,</p>
+      <p>Moc: ${horse_power}HP</p>
+      <p class="bold">Cena: ${price}$</p>
+      </div>
+      <div>
+      <img class="car-img img" src="https://placehold.co/600x400" />
+      </div>
       </div>
       <form id="form">
         <div class="form-section">
@@ -114,9 +122,7 @@ export default class Form {
   
         <div class="form-section">
           <label for="deliveryDate">Data dostawy:</label><br />
-          <select class="input-field" value="${
-            this.date
-          }" id="deliveryDate" name="deliveryDate">
+          <select class="input-field" id="deliveryDate" name="deliveryDate">
           </select>
         </div>
         <div class="form-section" id="price">
@@ -125,9 +131,13 @@ export default class Form {
         <div class="form-section">
         <button class="btn btn-send" type="submit">ZAMÓW</button>
         </div>
+        </div>
+
+        <div class="close close-bottom"><p><<< Powrót do listy</p></div>
       </form>`;
     this.$form.innerHTML = fromContent;
-    this.$formBtnClose = document.querySelector("#close");
+    this.$formContent = document.querySelector("#form-content");
+    this.$formBtnClose = document.querySelectorAll(".close");
     this.$submitForm = document.querySelector("#form");
     this.$inputs = document.querySelectorAll(".input-field");
     this.$deliveryDateSelect = document.querySelector("#deliveryDate");
@@ -137,25 +147,84 @@ export default class Form {
 
   //   event handlers
   handleListeners = () => {
-    //   close butotn
     // TODO: ADD GO BACK BUTTON
-    this.$formBtnClose.addEventListener("click", () => {
-      LOCALSTORAGE.write(localStorage_KEY, {
-        isOn: false,
-        uuid: this.car.uuid,
-      });
-      this.$formContainer.classList.toggle("d-none");
-    });
+    this.$formBtnClose.forEach((e) =>
+      e.addEventListener("click", () => {
+        LOCALSTORAGE.write(localStorage_KEY, {
+          isOn: false,
+          uuid: this.car.uuid,
+        });
+        this.$formContainer.classList.toggle("d-none");
+        this.clear();
+      })
+    );
 
     //form submit
     this.$submitForm.addEventListener("submit", (e) => {
       e.preventDefault();
-      const $inputs = document.querySelectorAll(".input-field");
+      LOCALSTORAGE.clear();
+
+      const {
+        producer,
+        model,
+        year_of_production,
+        mileage_km,
+        horse_power,
+        price,
+      } = this.car;
+
+      const formSum = `
+      <p class="header">Dziękujemy za Zakup!</p>
+      <p class="bold">Podsumowanie:</p>
+      <div class="form-section form-flex">
+      <div>
+      <p class="header">${producer} ${model}</p>
+      <p>Rok: ${year_of_production},</p>
+      <p>Przebieg: ${mileage_km}km,</p>
+      <p>Moc: ${horse_power}HP</p>
+      <p>Data dostawy: ${this.date}</p>
+      <p>Opłata: ${this.money ? "Gotówka" : "Leasing"}</p>
+      <p class="bold">Cena: ${price}$</p>
+      </div>
+      <div>
+      <img class="car-img img" src="https://placehold.co/600x400" />
+      </div>
+      </div>
+      <p>Dodatkowe Wyposażenie:</p>
+      `;
+
+      this.$formContent.innerHTML = formSum;
+
+      if (this.extras.length === 0) {
+        this.$formContent.insertAdjacentHTML(
+          "beforeend",
+          `<div class="extra">
+              <p>Brak dodatkowego wyposażenia</p>
+          </div>`
+        );
+      } else {
+        accessories.forEach(({ id, name, price }) => {
+          const isIDused = this.extras.includes(id);
+          if (isIDused) {
+            this.$formContent.insertAdjacentHTML(
+              "beforeend",
+              `<div data-id="${id}" data-price="${price}" class="extra">
+                    <p>${name}</p><p class="extra-price">+${price}$</p>
+                    </div>`
+            );
+          }
+        });
+      }
     });
 
     // input change
     this.$submitForm.addEventListener("change", () => {
       const [firstName, lastName, money, leasing, date] = [...this.$inputs];
+      this.firstName = firstName.value;
+      this.lastName = firstName.value;
+      this.money = money.checked;
+      this.leasing = leasing.checked;
+      this.date = date.value;
       const inputs = [
         firstName.value,
         lastName.value,
@@ -192,8 +261,14 @@ export default class Form {
       const date = new Date(today);
       date.setDate(date.getDate() + i);
       const option = document.createElement("option");
+
       option.text = date.toLocaleDateString();
-      option.value = date.toISOString().split("T")[0]; // Format: YYYY-MM-DD
+      const dateFormat = date.toISOString().split("T")[0];
+      option.value = dateFormat; // Format: YYYY-MM-DD
+
+      if (dateFormat === this.date) {
+        option.setAttribute("selected", true);
+      }
       this.$deliveryDateSelect.add(option);
     }
   };
@@ -224,16 +299,16 @@ export default class Form {
     const totalPrice = carPrice + carExtras;
 
     this.totalPrice = totalPrice;
-    this.$price.innerHTML = `<p>TOTAL: <strong>${totalPrice}</strong>$</p>`;
+    this.$price.innerHTML = `<p>Łączna kwota: <strong>${totalPrice}</strong>$</p>`;
   };
 
-  render = () => {
+  show = () => {
     if (this.isOn === true) {
       this.$formContainer.classList.toggle("d-none");
     }
   };
 
   clear = () => {
-    //TODO: clear b4 close
+    this.$form.innerHTML = "";
   };
 }

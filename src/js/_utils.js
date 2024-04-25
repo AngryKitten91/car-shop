@@ -11,4 +11,8 @@ export default class LOCALSTORAGE {
     const value = JSON.parse(localStorage.getItem(key));
     return value.find(({ uuid }) => uuid === itemName);
   }
+
+  static clear() {
+    localStorage.clear();
+  }
 }
