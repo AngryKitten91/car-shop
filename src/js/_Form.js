@@ -133,7 +133,7 @@ export default class Form {
         </div>
         </div>
 
-        <div class="close close-bottom"><p><<< Powrót do listy</p></div>
+        <div class="close close-bottom"><p class="mt-50"><<< Powrót do listy</p></div>
       </form>`;
     this.$form.innerHTML = fromContent;
     this.$formContent = document.querySelector("#form-content");
