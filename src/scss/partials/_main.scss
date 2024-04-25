@@ -6,9 +6,39 @@ body {
   // background-color: $colorBlue;
 }
 
+header {
+  // height: 350px;
+  color: $colorWhite;
+  background: rgb(19, 60, 172);
+  background: linear-gradient(
+    90deg,
+    rgba(19, 60, 172, 1) 0%,
+    rgba(43, 147, 255, 1) 100%
+  );
+}
+
+.header {
+  &-title {
+    margin: 20px 0;
+    font-size: 4rem;
+  }
+
+  &-container {
+    padding: 30px !important;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    height: 100%;
+    align-content: center;
+    & > * {
+      width: 50%;
+    }
+  }
+}
+
 footer {
-  background-color: #1e1e1e;
-  color: #fff;
+  background-color: $colorDarkBlue;
+  color: $colorWhite;
   padding: 50px;
   text-align: center;
   width: 100%;
@@ -313,6 +343,23 @@ footer a:hover {
     }
   }
 
+  .header {
+    &-container {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      height: 100%;
+      align-content: center;
+      text-align: center;
+      & > * {
+        width: 100%;
+        &:last-child {
+          order: -1;
+        }
+      }
+    }
+  }
+
   .form {
     width: 90vw;
     height: 90vh;
@@ -339,6 +386,25 @@ footer a:hover {
     font-size: 1rem;
     & > * {
       width: 100%;
+    }
+  }
+
+  .header {
+    &-title {
+      margin: 20px 0;
+      font-size: 4rem;
+    }
+
+    &-container {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      height: 100%;
+      align-content: center;
+      text-align: center;
+      & > * {
+        width: 100%;
+      }
     }
   }
 

@@ -1,7 +1,6 @@
 import LOCALSTORAGE from "./_utils";
 import cars from "./_cars";
 import { onKonamiCode } from "./_functions";
-// import accessories from "./_accessories";
 import { generateCarList } from "./_functions";
 import Form from "./_Form";
 

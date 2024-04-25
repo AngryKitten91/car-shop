@@ -6,17 +6,35 @@
     <title>Cars</title>
   </head>
   <body>
-    <div class="c-wrap">
-      <div>
-        <input placeholder="Szukaj..." type="text" id="filter" />
+    <header>
+      <div class="c-wrap header-container">
+        <div>
+          <h1 class="header-title">DreamAuto</h1>
+          <p>Twój sen o idealnym samochodzie <br />zaczyna się tutaj!</p>
+        </div>
+        <div>
+          <img
+            class="img header-img"
+            src="https://cdn.pixabay.com/photo/2023/10/09/08/59/city-8303679_1280.png"
+            alt="https://cdn.pixabay.com/photo/2023/10/09/08/59/city-8303679_1280.png"
+            srcset=""
+          />
+        </div>
       </div>
-      <div id="cars" class="cars c-flex c-flex--spaceBetween"></div>
-      <div id="c-form" class="bg d-none fade-in">
-        <div id="form" class="form"></div>
-        <!-- <div id="form-error"></div> -->
+    </header>
+    <main>
+      <div class="c-wrap">
+        <div>
+          <input placeholder="Szukaj..." type="text" id="filter" />
+        </div>
+        <div id="cars" class="cars c-flex c-flex--spaceBetween"></div>
+        <div id="c-form" class="bg d-none fade-in">
+          <div id="form" class="form"></div>
+          <!-- <div id="form-error"></div> -->
+        </div>
+        <!-- <div id="pagination" class="c-pagination"></div> -->
       </div>
-      <!-- <div id="pagination" class="c-pagination"></div> -->
-    </div>
+    </main>
     <footer>
       <div class="footer c-wrap">
         <div class="footer-section">
