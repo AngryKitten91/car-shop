@@ -21,7 +21,7 @@ export const generateCarList = (arr, targetElem, filter) => {
       </div>
       <div>
       <img src="https://img.freepik.com/free-vector/flat-design-no-data-illustration_23-2150527142.jpg?w=740&t=st=1714144035~exp=1714144635~hmac=c6c3438e8ba5a717cd7fb9ac6009b3450f28ea308ca5a8cf2caa4d0b8572f667" 
-      class="img"
+      class="img fade-in"
       alt="Image by Freepik">
       </div>
       </div>`
