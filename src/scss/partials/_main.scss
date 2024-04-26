@@ -76,6 +76,10 @@ footer a:hover {
   margin-top: 50px;
 }
 
+.text-center {
+  text-align: center;
+}
+
 .header {
   font-size: 2rem;
   font-weight: bold;
@@ -107,7 +111,6 @@ footer a:hover {
 }
 
 .extra {
-  // display: inline-block;
   @include boxShadow;
   display: flex;
   justify-content: space-between;
@@ -121,10 +124,6 @@ footer a:hover {
   &-pick {
     background-color: $colorOrange;
     color: $colorWhite;
-  }
-  &-price {
-    // font-size: 0.75rem;
-    // text-align: right;
   }
 }
 

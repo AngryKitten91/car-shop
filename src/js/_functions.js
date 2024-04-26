@@ -1,16 +1,33 @@
 // generate cars list
 export const generateCarList = (arr, targetElem, filter) => {
   targetElem.innerHTML = "";
-  arr
-    .filter(({ producer, model }) => {
-      if (filter) {
-        const carName = `${producer} ${model}`.toLowerCase();
-        const userFilter = filter.toLowerCase();
-        return carName.includes(userFilter);
-      }
-      return true;
-    })
-    .forEach(
+  const arrFilter = arr.filter(({ producer, model }) => {
+    if (filter) {
+      const carName = `${producer} ${model}`.toLowerCase();
+      const userFilter = filter.toLowerCase();
+      return carName.includes(userFilter);
+    }
+    return true;
+  });
+
+  if (arrFilter.length === 0) {
+    console.log("empty");
+    targetElem.insertAdjacentHTML(
+      "beforeend",
+      `<div class="c-wrap info-container fade-in text-center">
+      <div>
+      <h2>Ooops...</h2>
+      <p>Brak wyników wyszukiwania</p>
+      </div>
+      <div>
+      <img src="https://img.freepik.com/free-vector/flat-design-no-data-illustration_23-2150527142.jpg?w=740&t=st=1714144035~exp=1714144635~hmac=c6c3438e8ba5a717cd7fb9ac6009b3450f28ea308ca5a8cf2caa4d0b8572f667" 
+      class="img"
+      alt="Image by Freepik">
+      </div>
+      </div>`
+    );
+  } else {
+    arrFilter.forEach(
       ({
         producer,
         year_of_production,
@@ -36,6 +53,7 @@ export const generateCarList = (arr, targetElem, filter) => {
         );
       }
     );
+  }
 };
 
 export const carSchema = (
@@ -198,5 +216,3 @@ export const onKonamiCode = (cb) => {
     input = "" + e.keyCode;
   });
 };
-
-
