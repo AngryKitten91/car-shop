@@ -11,7 +11,6 @@ export const generateCarList = (arr, targetElem, filter) => {
   });
 
   if (arrFilter.length === 0) {
-    console.log("empty");
     targetElem.insertAdjacentHTML(
       "beforeend",
       `<div class="c-wrap info-container fade-in text-center">
