@@ -1,7 +1,7 @@
 import LOCALSTORAGE from "./_utils";
 import cars from "./_cars";
-import { onKonamiCode } from "./_functions";
-import { generateCarList } from "./_functions";
+import { onKonamiCode } from "./_utils";
+import { generateCarList } from "./_schemas";
 import Form from "./_Form";
 
 import { localStorage_KEY, searchInput } from "./_keys";

@@ -1,3 +1,4 @@
+//  accessories data
 const accessories = [
   { id: "A1b2", name: "Aluminiowe felgi", price: 2000 },
   { id: "C3d4", name: "System nawigacji GPS", price: 1500 },
