@@ -55,6 +55,7 @@ export default class Form {
       mileage_km,
       horse_power,
       price,
+      img
     } = this.car;
 
     this.$form.innerHTML = formSchema(
@@ -67,7 +68,8 @@ export default class Form {
       this.firstName,
       this.lastName,
       this.money,
-      this.leasing
+      this.leasing,
+      img
     );
 
     this.$formContent = document.querySelector("#form-content");
@@ -104,6 +106,7 @@ export default class Form {
         mileage_km,
         horse_power,
         price,
+        img
       } = this.car;
 
       this.$formContent.innerHTML = carSummarySchema(
@@ -114,7 +117,8 @@ export default class Form {
         horse_power,
         this.date,
         this.money,
-        price
+        price,
+        img
       );
 
       if (this.extras.length === 0) {

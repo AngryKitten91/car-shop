@@ -8,6 +8,7 @@ const cars = [
     mileage_km: 50000,
     uuid: "abfc6f45-3631-4df7-88b7-d8b16ea8f2c2",
     price: 67000,
+    img: "https://images.pexels.com/photos/18142185/pexels-photo-18142185/free-photo-of-pole-niebieski-wies-samochod-sportowy.jpeg?auto=compress&cs=tinysrgb&w=600",
   },
   {
     producer: "Honda",
@@ -17,6 +18,7 @@ const cars = [
     mileage_km: 40000,
     uuid: "aaf9a9cb-0884-43b7-9f37-7489b2a66aa9",
     price: 48000,
+    img: "https://images.pexels.com/photos/733745/pexels-photo-733745.jpeg?auto=compress&cs=tinysrgb&w=600",
   },
   {
     producer: "Ford",
@@ -26,6 +28,7 @@ const cars = [
     mileage_km: 60000,
     uuid: "695b7381-f833-46da-a0b4-c6097a674aef",
     price: 54000,
+    img: "https://images.pexels.com/photos/1592384/pexels-photo-1592384.jpeg?auto=compress&cs=tinysrgb&w=600",
   },
   {
     producer: "Chevrolet",
@@ -35,6 +38,7 @@ const cars = [
     mileage_km: 70000,
     uuid: "b54652b7-27af-4d11-a0a9-dc3de5e684e8",
     price: 51000,
+    img: "https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg?auto=compress&cs=tinysrgb&w=600",
   },
   {
     producer: "Nissan",
@@ -44,6 +48,7 @@ const cars = [
     mileage_km: 35000,
     uuid: "5bb67056-641d-4c58-bb62-b772f0004488",
     price: 72000,
+    img: "https://images.pexels.com/photos/210019/pexels-photo-210019.jpeg?auto=compress&cs=tinysrgb&w=600",
   },
   {
     producer: "BMW",
@@ -53,6 +58,7 @@ const cars = [
     mileage_km: 20000,
     uuid: "cc3efb5f-3a18-4b95-96d3-58c8df4f1d44",
     price: 34000,
+    img: "https://images.pexels.com/photos/712618/pexels-photo-712618.jpeg?auto=compress&cs=tinysrgb&w=600",
   },
   {
     producer: "Audi",
@@ -62,6 +68,7 @@ const cars = [
     mileage_km: 45000,
     uuid: "c242054e-2ab3-4b8f-9bc8-3d8c2b48564c",
     price: 49000,
+    img: "https://images.pexels.com/photos/1534604/pexels-photo-1534604.jpeg?auto=compress&cs=tinysrgb&w=600",
   },
   {
     producer: "Mercedes-Benz",
@@ -71,6 +78,7 @@ const cars = [
     mileage_km: 55000,
     uuid: "2d0e4b23-9d47-40d8-a14d-3d79ef2b9c0d",
     price: 66000,
+    img: "https://images.pexels.com/photos/977003/pexels-photo-977003.jpeg?auto=compress&cs=tinysrgb&w=600",
   },
   {
     producer: "Volkswagen",
@@ -80,6 +88,7 @@ const cars = [
     mileage_km: 40000,
     uuid: "7e12c9cc-cdd7-48b2-9c77-b0e4e1a18581",
     price: 68000,
+    img: "https://images.pexels.com/photos/1383834/pexels-photo-1383834.jpeg?auto=compress&cs=tinysrgb&w=600",
   },
   {
     producer: "Hyundai",
@@ -89,6 +98,7 @@ const cars = [
     mileage_km: 30000,
     uuid: "66594a35-9641-4d62-8c6d-3dc3526e42d8",
     price: 56000,
+    img: "https://images.pexels.com/photos/2127022/pexels-photo-2127022.jpeg?auto=compress&cs=tinysrgb&w=600",
   },
   {
     producer: "Kia",
@@ -98,6 +108,7 @@ const cars = [
     mileage_km: 65000,
     uuid: "91ff6b8f-7fa6-44fb-b96f-c8d6c8b3663a",
     price: 64000,
+    img: "https://images.pexels.com/photos/2832251/pexels-photo-2832251.jpeg?auto=compress&cs=tinysrgb&w=600",
   },
   {
     producer: "Subaru",
@@ -107,6 +118,7 @@ const cars = [
     mileage_km: 55000,
     uuid: "bd0f5a40-60c1-42ac-8840-4e3a9d636e36",
     price: 50000,
+    img: "https://images.pexels.com/photos/575386/pexels-photo-575386.jpeg?auto=compress&cs=tinysrgb&w=600",
   },
   {
     producer: "Mazda",
@@ -116,6 +128,7 @@ const cars = [
     mileage_km: 60000,
     uuid: "4ec4eb77-3d25-47e5-90bb-bb1273a04919",
     price: 57000,
+    img: "https://images.pexels.com/photos/57409/ford-mustang-stallion-red-57409.jpeg?auto=compress&cs=tinysrgb&w=600",
   },
   {
     producer: "Lexus",
@@ -125,6 +138,7 @@ const cars = [
     mileage_km: 35000,
     uuid: "bea42d40-5185-4266-8030-b81c4c32a084",
     price: 53000,
+    img: "https://images.pexels.com/photos/1035108/pexels-photo-1035108.jpeg?auto=compress&cs=tinysrgb&w=600",
   },
   {
     producer: "Infiniti",
@@ -134,6 +148,7 @@ const cars = [
     mileage_km: 70000,
     uuid: "65d31633-61d9-4413-b6c2-c8e7bbf4874b",
     price: 43000,
+    img: "https://images.pexels.com/photos/1429775/pexels-photo-1429775.jpeg?auto=compress&cs=tinysrgb&w=600",
   },
   {
     producer: "Acura",
@@ -143,6 +158,7 @@ const cars = [
     mileage_km: 50000,
     uuid: "4bc4b08f-46de-4ef8-88d2-ae8c5b0ac6d7",
     price: 61000,
+    img: "https://images.pexels.com/photos/757185/pexels-photo-757185.jpeg?auto=compress&cs=tinysrgb&w=600",
   },
   {
     producer: "Tesla",
@@ -152,6 +168,7 @@ const cars = [
     mileage_km: 15000,
     uuid: "4fe36b6b-3a41-4f47-bb82-62b0be7e1f7f",
     price: 48000,
+    img: "https://images.pexels.com/photos/3874337/pexels-photo-3874337.jpeg?auto=compress&cs=tinysrgb&w=600",
   },
   {
     producer: "Volvo",
@@ -161,6 +178,7 @@ const cars = [
     mileage_km: 60000,
     uuid: "47e7a62e-fbe8-4db4-9b5e-58b777a1308f",
     price: 62000,
+    img: "https://images.pexels.com/photos/831475/pexels-photo-831475.jpeg?auto=compress&cs=tinysrgb&w=600",
   },
   {
     producer: "Toyota",
@@ -170,6 +188,7 @@ const cars = [
     mileage_km: 40000,
     uuid: "e0714377-55a9-4899-91c1-6f3243a066f0",
     price: 51000,
+    img: "https://images.pexels.com/photos/38570/lamborghini-car-speed-prestige-38570.jpeg?auto=compress&cs=tinysrgb&w=600",
   },
   {
     producer: "Honda",
@@ -179,6 +198,7 @@ const cars = [
     mileage_km: 45000,
     uuid: "ac80d582-2b64-45d0-8e29-1e91871b62a3",
     price: 59000,
+    img: "https://images.pexels.com/photos/810357/pexels-photo-810357.jpeg?auto=compress&cs=tinysrgb&w=600",
   },
   {
     producer: "Ford",
@@ -188,6 +208,7 @@ const cars = [
     mileage_km: 30000,
     uuid: "2531d2e0-7df6-42fc-a8d4-86e76e1e97b7",
     price: 67000,
+    img: "https://images.pexels.com/photos/794435/pexels-photo-794435.jpeg?auto=compress&cs=tinysrgb&w=600",
   },
   {
     producer: "Chevrolet",
@@ -197,6 +218,7 @@ const cars = [
     mileage_km: 55000,
     uuid: "5fe92d97-0b0b-4d1a-b066-b39b2d5cbbe2",
     price: 70000,
+    img: "https://images.pexels.com/photos/3772857/pexels-photo-3772857.png?auto=compress&cs=tinysrgb&w=600",
   },
   {
     producer: "Nissan",
@@ -206,6 +228,7 @@ const cars = [
     mileage_km: 35000,
     uuid: "66ec66c7-bd38-4f12-a028-b7e24b3bc47a",
     price: 46000,
+    img: "https://images.pexels.com/photos/757186/pexels-photo-757186.jpeg?auto=compress&cs=tinysrgb&w=600",
   },
   {
     producer: "BMW",
@@ -215,6 +238,7 @@ const cars = [
     mileage_km: 50000,
     uuid: "36dfb09c-09d4-45f2-884d-18614508bb02",
     price: 64000,
+    img: "https://images.pexels.com/photos/452099/pexels-photo-452099.jpeg?auto=compress&cs=tinysrgb&w=600",
   },
   {
     producer: "Audi",
@@ -224,6 +248,7 @@ const cars = [
     mileage_km: 25000,
     uuid: "1f417b15-88d7-48b9-bc49-1a6119ff89d0",
     price: 67000,
+    img: "https://images.pexels.com/photos/1007410/pexels-photo-1007410.jpeg?auto=compress&cs=tinysrgb&w=600",
   },
   {
     producer: "Mercedes-Benz",
@@ -233,6 +258,7 @@ const cars = [
     mileage_km: 20000,
     uuid: "5acda9d6-81ff-449e-867b-bcccf5ddcd10",
     price: 60000,
+    img: "https://images.pexels.com/photos/1209774/pexels-photo-1209774.jpeg?auto=compress&cs=tinysrgb&w=600",
   },
   {
     producer: "Volkswagen",
@@ -242,6 +268,7 @@ const cars = [
     mileage_km: 40000,
     uuid: "bd607a60-ff56-466e-8932-3ac86941d7fc",
     price: 47000,
+    img: "https://images.pexels.com/photos/2684219/pexels-photo-2684219.jpeg?auto=compress&cs=tinysrgb&w=600",
   },
   {
     producer: "Hyundai",

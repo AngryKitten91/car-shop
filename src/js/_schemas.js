@@ -36,6 +36,7 @@ export const generateCarList = (arr, targetElem, filter) => {
         extras,
         uuid,
         price,
+        img,
       }) => {
         targetElem.insertAdjacentHTML(
           "beforeend",
@@ -47,7 +48,8 @@ export const generateCarList = (arr, targetElem, filter) => {
             mileage_km,
             extras,
             uuid,
-            price
+            price,
+            img
           )
         );
       }
@@ -63,11 +65,16 @@ export const carSchema = (
   mileage_km,
   extras,
   uuid,
-  price
+  price,
+  img
 ) => {
   return `
     <div class="car" data-uuid=${uuid} data-extras="${extras}" data-producer="${producer}" data-model="${model}" data-hp="${horse_power}" data-mileage="${mileage_km}" data-year="${year_of_production}">
-    <img class="car-img img pb-20" src="https://placehold.co/600x400" />
+    <div class="car-img" style="width:100%;height:200px;background: url(${
+      img ?? "https://placehold.co/600x400"
+    });background-size: cover;background-position: center bottom">
+    
+    </div
       <h1 class="car-name">${producer}</h1>
       <div class="car-model"><span class="bold">Model:</span> ${model}</div>
       <div class="car-year"><span class="bold">Rok Produkcji:</span> ${year_of_production}</div>
@@ -86,11 +93,12 @@ export const carSummarySchema = (
   horse_power,
   date,
   money,
-  price
+  price,
+  img
 ) => {
   return `
   <p class="header">Dziękujemy za Zakup!</p>
-  <p class="bold">Podsumowanie:</p>
+  <p class="">Podsumowanie:</p>
   <div class="form-section form-flex">
   <div>
   <p class="header">${producer} ${model}</p>
@@ -102,10 +110,12 @@ export const carSummarySchema = (
   <p class="bold">Cena: ${price}$</p>
   </div>
   <div>
-  <img class="car-img img" src="https://placehold.co/600x400" />
+      <img class="car-img img" src="${img ?? "https://placehold.co/600x400"}" />
   </div>
   </div>
+  <div class="form-section form-flex">
   <p>Dodatkowe Wyposażenie:</p>
+  </div>
   `;
 };
 
@@ -119,7 +129,8 @@ export const formSchema = (
   firstName,
   lastName,
   money,
-  leasing
+  leasing,
+  img
 ) => {
   return `
   <div id="close" class="btn btn-close close c c-flex--center">x</div>
@@ -133,7 +144,7 @@ export const formSchema = (
     <p class="bold">Cena: ${price}$</p>
     </div>
     <div>
-    <img class="car-img img" src="https://placehold.co/600x400" />
+    <img class="car-img img" src="${img ?? "https://placehold.co/600x400"}" />
     </div>
     </div>
     <form id="form">
@@ -202,5 +213,3 @@ export const formSchema = (
       <div class="close close-bottom"><p class="mt-50"><<< Powrót do listy</p></div>
     </form>`;
 };
-
-
