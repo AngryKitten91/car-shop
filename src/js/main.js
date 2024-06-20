@@ -19,7 +19,7 @@ const $cars = document.querySelector("#cars");
 const $filter = document.querySelector("#filter");
 
 // check form open onload
-if (formStatusCheck.isOn === true) {
+if (formStatusCheck.isOn) {
   new Form(true, formStatusCheck.uuid);
 }
 
